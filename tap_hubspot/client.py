@@ -304,7 +304,7 @@ class DynamicIncrementalHubspotStream(DynamicHubspotStream):
         if self._is_incremental_search(context):
             # Only filter in case we have a value to filter on
             # https://developers.hubspot.com/docs/api/crm/search
-            ts = datetime.datetime.strptime(self.get_starting_replication_key_value(context), "%Y-%m-%dT%H:%M:%S.%fZ")
+            ts = datetime.datetime.strptime(self.get_starting_replication_key_value(context), "%Y-%m-%dT%H:%M:%S.%f%z")
             ts = pytz.utc.localize(ts)
             if next_page_token:
                 # Hubspot wont return more than 10k records so when we hit 10k we
